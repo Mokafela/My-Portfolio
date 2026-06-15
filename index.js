@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectFilters();
   initContactForm();
   initNavHighlight();
+  initThemeSwitcher();
 });
 
 // Mobile Navbar Toggle Menu
@@ -207,4 +208,53 @@ function initNavHighlight() {
   });
 
   sections.forEach(sec => navObserver.observe(sec));
+}
+
+// Theme Switcher Toggle and Styling Classes Handler
+function initThemeSwitcher() {
+  const toggleBtn = document.getElementById('switcher-toggle');
+  const menu = document.getElementById('switcher-menu');
+  const themeButtons = document.querySelectorAll('.theme-btn');
+
+  if (!toggleBtn || !menu) return;
+
+  // Toggle menu display
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('open');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', () => {
+    menu.classList.remove('open');
+  });
+
+  // Theme selection handler
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const theme = btn.getAttribute('data-theme');
+      
+      // Update active button state
+      themeButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update body theme classes
+      document.body.className = ''; // Reset
+      if (theme !== 'default') {
+        document.body.classList.add(`theme-${theme}`);
+      }
+
+      // Save user preference
+      localStorage.setItem('portfolio-theme', theme);
+    });
+  });
+
+  // Load saved theme preference
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  if (savedTheme) {
+    const targetBtn = document.querySelector(`.theme-btn[data-theme="${savedTheme}"]`);
+    if (targetBtn) {
+      targetBtn.click();
+    }
+  }
 }

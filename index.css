@@ -962,3 +962,272 @@ section {
     text-align: center;
   }
 }
+
+/* --- THEME VARIATIONS --- */
+
+/* 1. Cyberpunk (Neo-Brutalist) */
+body.theme-cyberpunk {
+  --bg-color: #000000;
+  --text-color: #00ff66;
+  --text-muted: #888888;
+  --primary: #ff0055;
+  --primary-hover: #ff3300;
+  --primary-glow: rgba(255, 0, 85, 0.25);
+  --secondary: #00ff66;
+  --accent: #ffff00;
+  --card-bg: #0d0d0d;
+  --card-border: #333333;
+  --card-hover-bg: #111111;
+  --card-hover-border: #00ff66;
+}
+
+body.theme-cyberpunk * {
+  border-radius: 0px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+body.theme-cyberpunk .blob {
+  display: none;
+}
+
+body.theme-cyberpunk .project-card,
+body.theme-cyberpunk .stat-card,
+body.theme-cyberpunk .feature-card,
+body.theme-cyberpunk .skills-category,
+body.theme-cyberpunk .contact-form {
+  border: 2px solid #333333 !important;
+}
+
+body.theme-cyberpunk .project-card:hover,
+body.theme-cyberpunk .stat-card:hover,
+body.theme-cyberpunk .feature-card:hover,
+body.theme-cyberpunk .skills-category:hover {
+  border-color: #00ff66 !important;
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 4px 4px 0px #00ff66 !important;
+}
+
+body.theme-cyberpunk .btn {
+  border: 2px solid var(--primary) !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+
+body.theme-cyberpunk .btn:hover {
+  background: var(--primary) !important;
+  color: #000 !important;
+  box-shadow: 4px 4px 0px var(--secondary) !important;
+}
+
+/* 2. Elegant Luxury (Classic Serif Mode) */
+body.theme-luxury {
+  --bg-color: #fcfaf6;
+  --text-color: #1a1a1a;
+  --text-muted: #666666;
+  --primary: #b8975a;
+  --primary-hover: #9e7f45;
+  --primary-glow: rgba(184, 151, 90, 0.1);
+  --secondary: #2c3e50;
+  --accent: #8e44ad;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-hover-bg: #fcfcfc;
+  --card-hover-border: rgba(184, 151, 90, 0.4);
+}
+
+body.theme-luxury {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-luxury .blob {
+  background: radial-gradient(circle, rgba(184, 151, 90, 0.05) 0%, transparent 70%) !important;
+}
+
+body.theme-luxury h1, 
+body.theme-luxury h2, 
+body.theme-luxury h3, 
+body.theme-luxury h4,
+body.theme-luxury .logo {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+
+body.theme-luxury .logo span {
+  color: var(--primary);
+}
+
+body.theme-luxury .header {
+  background: rgba(252, 250, 246, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.theme-luxury .btn-primary {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(184, 151, 90, 0.2) !important;
+}
+
+body.theme-luxury .btn-primary:hover {
+  background: var(--primary-hover) !important;
+  box-shadow: 0 6px 20px rgba(184, 151, 90, 0.3) !important;
+}
+
+body.theme-luxury .btn-secondary {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  color: var(--text-color) !important;
+}
+
+body.theme-luxury .gradient-text {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: var(--primary) !important;
+}
+
+body.theme-luxury .project-card,
+body.theme-luxury .stat-card,
+body.theme-luxury .feature-card,
+body.theme-luxury .skills-category,
+body.theme-luxury .contact-form {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+body.theme-luxury .form-group input,
+body.theme-luxury .form-group textarea {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  color: var(--text-color) !important;
+}
+
+body.theme-luxury .interactive-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.theme-luxury .keyword { color: #8858a4; }
+body.theme-luxury .variable { color: #2c3e50; }
+body.theme-luxury .string { color: #b8975a; }
+
+/* 3. Theme Switcher Component Styles */
+.theme-switcher {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.switcher-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  transition: var(--transition-smooth);
+}
+
+.switcher-toggle:hover {
+  transform: rotate(45deg) scale(1.05);
+}
+
+.switcher-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(13, 17, 30, 0.95);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  min-width: 160px;
+  animation: slideUp 0.3s ease forwards;
+}
+
+.switcher-menu.open {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  transition: var(--transition-quick);
+  width: 100%;
+}
+
+.theme-btn:hover,
+.theme-btn.active {
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-glass { background: #6366f1; }
+.dot-cyber { background: #00ff66; }
+.dot-luxury { background: #b8975a; }
+
+/* Apply switcher theme light mode styling overrides */
+body.theme-luxury .switcher-menu {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+}
+
+body.theme-luxury .theme-btn {
+  color: #666666 !important;
+}
+
+body.theme-luxury .theme-btn:hover,
+body.theme-luxury .theme-btn.active {
+  color: #000000 !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+body.theme-cyberpunk .switcher-menu {
+  background: #000000 !important;
+  border: 2px solid #333333 !important;
+}
+
+body.theme-cyberpunk .theme-btn {
+  border-radius: 0 !important;
+}
+
