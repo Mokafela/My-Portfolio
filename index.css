@@ -1249,6 +1249,8 @@ body.theme-cyberpunk .theme-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .spline-wrapper::before {
@@ -1276,5 +1278,6 @@ body.theme-cyberpunk .theme-btn {
   height: 100%;
   background: transparent !important;
   background-color: transparent !important;
+  transition: transform 0.1s ease-out;
 }
 

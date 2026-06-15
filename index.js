@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavHighlight();
   initThemeSwitcher();
   initSplineTransparency();
+  initSplineScrollTrigger();
 });
 
 // Mobile Navbar Toggle Menu
@@ -293,4 +294,20 @@ function initSplineTransparency() {
     attempts++;
     if (attempts > 30) clearInterval(interval);
   }, 100);
+}
+
+// Map scroll progress to 3D rotation of the Spline Viewer
+function initSplineScrollTrigger() {
+  const viewer = document.querySelector('spline-viewer');
+  if (!viewer) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    // Map scroll progress to y-axis and x-axis rotations for 3D effect
+    const rotY = scrollY * 0.12; 
+    const rotX = scrollY * 0.04;
+    
+    // Update transform
+    viewer.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+  });
 }
