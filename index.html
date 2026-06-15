@@ -13,6 +13,9 @@
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="index.css">
+
+  <!-- Spline Viewer Component -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
 </head>
 <body>
   <!-- Ambient background elements -->
@@ -68,23 +71,8 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="interactive-card-wrapper">
-          <div class="interactive-card" id="hero-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <span class="circle-dot"></span>
-                <span class="card-title">developer.js</span>
-              </div>
-              <pre class="code-block"><code><span class="keyword">const</span> <span class="variable">developer</span> = {
-  name: <span class="string">'Alex Carter'</span>,
-  skills: [<span class="string">'JS/TS'</span>, <span class="string">'React'</span>, <span class="string">'CSS'</span>, <span class="string">'Node'</span>],
-  passions: [<span class="string">'Aesthetics'</span>, <span class="string">'Perf'</span>, <span class="string">'UX'</span>],
-  coffeeLover: <span class="keyword">true</span>,
-  code: () => <span class="string">'✨ Beautiful Experiences ✨'</span>
-};</code></pre>
-            </div>
-          </div>
+        <div class="spline-wrapper">
+          <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyMvjduSp/scene.splinecode"></spline-viewer>
         </div>
       </div>
     </section>
