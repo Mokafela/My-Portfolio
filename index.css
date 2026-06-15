@@ -1274,5 +1274,7 @@ body.theme-cyberpunk .theme-btn {
 .spline-wrapper spline-viewer {
   width: 100%;
   height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 

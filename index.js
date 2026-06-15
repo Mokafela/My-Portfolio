@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initNavHighlight();
   initThemeSwitcher();
+  initSplineTransparency();
 });
 
 // Mobile Navbar Toggle Menu
@@ -257,4 +258,35 @@ function initThemeSwitcher() {
       targetBtn.click();
     }
   }
+}
+
+// Remove default backgrounds from Spline Viewer's internal shadow canvas
+function initSplineTransparency() {
+  const viewer = document.querySelector('spline-viewer');
+  if (!viewer) return;
+
+  const makeTransparent = () => {
+    const shadow = viewer.shadowRoot;
+    if (!shadow) return;
+
+    // Target internal container and canvas elements
+    const canvas = shadow.querySelector('canvas') || shadow.getElementById('canvas3d');
+    const container = shadow.getElementById('container');
+    const shadowLogo = shadow.getElementById('logo');
+
+    if (canvas) canvas.style.background = 'transparent';
+    if (container) container.style.background = 'transparent';
+    if (shadowLogo) shadowLogo.style.opacity = '0.3'; // Subtle watermark transparency
+  };
+
+  // Run on load event or immediately if already loaded
+  viewer.addEventListener('load', makeTransparent);
+  
+  // Backup polling in case event triggers early
+  let attempts = 0;
+  const interval = setInterval(() => {
+    makeTransparent();
+    attempts++;
+    if (attempts > 30) clearInterval(interval);
+  }, 100);
 }
