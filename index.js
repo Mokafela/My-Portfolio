@@ -253,15 +253,17 @@ function initLanguage() {
   const modalBtns = document.querySelectorAll('.lang-btn-select');
   const savedLang = localStorage.getItem('portfolio-lang');
 
+  // Pre-load default or saved language in background
   if (savedLang) {
     applyLanguage(savedLang);
-    if (modal) {
-      modal.style.display = 'none';
-    }
   } else {
-    if (modal) {
-      modal.classList.remove('fade-out');
-    }
+    applyLanguage('en');
+  }
+
+  // Always display selection modal on load
+  if (modal) {
+    modal.style.display = 'flex';
+    modal.classList.remove('fade-out');
   }
 
   modalBtns.forEach(btn => {
