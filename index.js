@@ -48,6 +48,7 @@ const translations = {
     skills_cat1: "Frontend Stack",
     skills_cat2: "Backend & State",
     skills_cat3: "UI & Performance",
+    skills_cat4: "Languages",
     projects_tag: "03 / Selected Works",
     projects_title: "Bringing Concepts to Reality",
     filter_all: "All",
@@ -112,6 +113,7 @@ const translations = {
     skills_cat1: "بخش فرانت‌اند",
     skills_cat2: "بخش بک‌اند و استیت",
     skills_cat3: "رابط کاربری و عملکرد",
+    skills_cat4: "زبان‌ها",
     projects_tag: "۰۳ / نمونه کارها",
     projects_title: "تبدیل ایده‌ها به واقعیت",
     filter_all: "همه",
@@ -176,6 +178,7 @@ const translations = {
     skills_cat1: "Frontend-Stack",
     skills_cat2: "Backend & State",
     skills_cat3: "UI & Performance",
+    skills_cat4: "Sprachen",
     projects_tag: "03 / Ausgewählte Arbeiten",
     projects_title: "Konzepte in die Realität umsetzen",
     filter_all: "Alle",
@@ -237,9 +240,9 @@ function applyLanguage(lang) {
   // Update navbar indicator
   const activeBtn = document.getElementById('lang-active-btn');
   if (activeBtn) {
-    const flags = { en: '🇬🇧', fa: '🇮🇷', de: '🇩🇪' };
-    const flag = flags[lang] || '🌐';
-    activeBtn.innerHTML = `${flag} <span>${lang.toUpperCase()}</span>`;
+    const flagSvgs = { en: 'flags/gb.svg', fa: 'flags/ir.svg', de: 'flags/de.svg' };
+    const flagSrc = flagSvgs[lang] || '';
+    activeBtn.innerHTML = `<img src="${flagSrc}" alt="" class="nav-flag"> <span>${lang.toUpperCase()}</span>`;
   }
 
   // Restart typed text with the new language words
