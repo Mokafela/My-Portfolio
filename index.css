@@ -1294,10 +1294,18 @@ body.theme-luxury .geo-circle {
   background: radial-gradient(circle at top left, rgba(184, 151, 90, 0.04), transparent) !important;
 }
 
+/* Base style to target child SVGs for rotation to avoid JS transform conflicts */
+.geo-shape svg {
+  display: block;
+  transform-origin: center;
+}
+
 .geo-triangle {
   top: 20%;
   left: 12%;
   filter: drop-shadow(0 0 15px var(--primary-glow));
+}
+.geo-triangle svg {
   animation: geoRotateClockwise 45s infinite linear;
 }
 
@@ -1305,6 +1313,8 @@ body.theme-luxury .geo-circle {
   top: 50%;
   right: 12%;
   filter: drop-shadow(0 0 20px rgba(217, 70, 239, 0.12));
+}
+.geo-hexagon svg {
   animation: geoRotateCounterClockwise 55s infinite linear;
 }
 
@@ -1312,6 +1322,8 @@ body.theme-luxury .geo-circle {
   top: 10%;
   left: 45%;
   opacity: 0.12;
+}
+.geo-cross-1 svg {
   animation: geoRotateClockwise 30s infinite linear;
 }
 
@@ -1319,7 +1331,69 @@ body.theme-luxury .geo-circle {
   top: 75%;
   right: 40%;
   opacity: 0.12;
+}
+.geo-cross-2 svg {
   animation: geoRotateCounterClockwise 35s infinite linear;
+}
+
+.geo-concentric {
+  top: 35%;
+  right: 25%;
+}
+.geo-concentric svg {
+  animation: geoRotateClockwise 60s infinite linear;
+}
+
+.geo-diamond {
+  top: 70%;
+  left: 30%;
+  filter: drop-shadow(0 0 10px var(--primary-glow));
+}
+.geo-diamond svg {
+  animation: geoRotateCounterClockwise 40s infinite linear;
+}
+
+.geo-box {
+  top: 45%;
+  left: 15%;
+}
+.geo-box svg {
+  animation: geoRotateClockwise 50s infinite linear;
+}
+
+.geo-waves {
+  top: 60%;
+  right: 10%;
+}
+.geo-waves svg {
+  animation: geoFloat 6s infinite alternate ease-in-out;
+}
+
+.geo-stars {
+  top: 80%;
+  left: 8%;
+  color: var(--secondary) !important;
+}
+.geo-stars svg {
+  animation: geoPulse 4s infinite alternate ease-in-out;
+}
+
+.geo-radar {
+  top: 88%;
+  right: 18%;
+}
+.geo-radar svg {
+  animation: geoRotateCounterClockwise 45s infinite linear;
+}
+
+@keyframes geoFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes geoPulse {
+  0% { transform: scale(0.92); opacity: 0.12; }
+  100% { transform: scale(1.08); opacity: 0.28; }
 }
 
 /* Rotating Animations */

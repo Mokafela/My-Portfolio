@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Carter | Creative Developer & Designer Portfolio</title>
-  <meta name="description" content="Personal portfolio of Alex Carter, a creative developer specializing in immersive web experiences, frontend engineering, and clean design.">
+  <title>Mohammad | Senior Frontend Engineer & Nuxt Specialist Portfolio</title>
+  <meta name="description" content="Personal portfolio of Mohammad, a Senior Frontend Engineer specializing in high-performance Vue 3, Nuxt 3, and modern web architectures.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,6 @@
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
   <!-- Ambient background elements -->
@@ -23,10 +22,10 @@
     <div class="blob blob-3"></div>
   </div>
 
-  <!-- High-Performance Geometric Background shapes -->
+  <!-- High-Performance Interactive Geometric Background -->
   <div class="geometry-bg">
     <!-- Dot Grid Matrix -->
-    <div class="geo-shape geo-grid" data-speed="-0.15">
+    <div class="geo-shape geo-grid" data-speed="-0.1" data-mouse="15">
       <svg width="220" height="220" fill="currentColor">
         <pattern id="dot-grid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
           <circle cx="2" cy="2" r="1.5" fill="rgba(255, 255, 255, 0.1)"></circle>
@@ -36,34 +35,89 @@
     </div>
 
     <!-- Frosted Glass Circle -->
-    <div class="geo-shape geo-circle" data-speed="0.1"></div>
+    <div class="geo-shape geo-circle" data-speed="0.12" data-mouse="35"></div>
 
     <!-- Glowing wireframe triangle -->
-    <div class="geo-shape geo-triangle" data-speed="0.25">
+    <div class="geo-shape geo-triangle" data-speed="0.22" data-mouse="25">
       <svg viewBox="0 0 100 100" width="130" height="130" fill="none" stroke="currentColor" stroke-width="1.5">
         <polygon points="50,10 90,80 10,80"></polygon>
       </svg>
     </div>
 
     <!-- Tech wireframe Hexagon -->
-    <div class="geo-shape geo-hexagon" data-speed="-0.2">
+    <div class="geo-shape geo-hexagon" data-speed="-0.18" data-mouse="30">
       <svg viewBox="0 0 100 100" width="160" height="160" fill="none" stroke="currentColor" stroke-width="1">
         <polygon points="50,5 90,25 90,75 50,95 10,75 10,25"></polygon>
       </svg>
     </div>
 
+    <!-- Concentric Rings -->
+    <div class="geo-shape geo-concentric" data-speed="0.16" data-mouse="40">
+      <svg viewBox="0 0 100 100" width="180" height="180" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="50" cy="50" r="45" stroke-dasharray="4,4"></circle>
+        <circle cx="50" cy="50" r="30"></circle>
+        <circle cx="50" cy="50" r="15" stroke-dasharray="2,2"></circle>
+      </svg>
+    </div>
+
+    <!-- Tech Diamond Outline -->
+    <div class="geo-shape geo-diamond" data-speed="-0.08" data-mouse="20">
+      <svg viewBox="0 0 100 100" width="100" height="100" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polygon points="50,5 95,50 50,95 5,50"></polygon>
+      </svg>
+    </div>
+
     <!-- Floating Crosses -->
-    <div class="geo-shape geo-cross-1" data-speed="0.08">
+    <div class="geo-shape geo-cross-1" data-speed="0.06" data-mouse="12">
       <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="1.5">
         <line x1="12" y1="5" x2="12" y2="19"></line>
         <line x1="5" y1="12" x2="19" y2="12"></line>
       </svg>
     </div>
 
-    <div class="geo-shape geo-cross-2" data-speed="-0.12">
+    <div class="geo-shape geo-cross-2" data-speed="-0.1" data-mouse="18">
       <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5">
         <line x1="12" y1="5" x2="12" y2="19"></line>
         <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </div>
+
+    <!-- Glowing Wireframe Box -->
+    <div class="geo-shape geo-box" data-speed="-0.15" data-mouse="32">
+      <svg viewBox="0 0 100 100" width="120" height="120" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="10" y="10" width="60" height="60"></rect>
+        <rect x="30" y="30" width="60" height="60" stroke-dasharray="4,4"></rect>
+        <line x1="10" y1="10" x2="30" y2="30"></line>
+        <line x1="70" y1="10" x2="90" y2="30"></line>
+        <line x1="10" y1="70" x2="30" y2="90"></line>
+        <line x1="70" y1="70" x2="90" y2="90"></line>
+      </svg>
+    </div>
+
+    <!-- Wavy Sine Lines -->
+    <div class="geo-shape geo-waves" data-speed="0.25" data-mouse="45">
+      <svg viewBox="0 0 100 40" width="180" height="72" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M 0,20 Q 25,5 50,20 T 100,20"></path>
+        <path d="M 0,28 Q 25,13 50,28 T 100,28" stroke-dasharray="2,2"></path>
+      </svg>
+    </div>
+
+    <!-- Star/Sparkle Cluster -->
+    <div class="geo-shape geo-stars" data-speed="0.08" data-mouse="15">
+      <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M 20,10 Q 20,20 10,20 Q 20,20 20,30 Q 20,20 30,20 Q 20,20 20,10 Z" fill="currentColor"></path>
+        <path d="M 70,50 Q 70,57 63,57 Q 70,57 70,64 Q 70,57 77,57 Q 70,57 70,50 Z" fill="currentColor"></path>
+        <path d="M 40,80 Q 40,84 36,84 Q 40,84 40,88 Q 40,84 44,84 Q 40,84 40,80 Z" fill="currentColor"></path>
+      </svg>
+    </div>
+
+    <!-- Radar Tech Ring -->
+    <div class="geo-shape geo-radar" data-speed="-0.2" data-mouse="30">
+      <svg viewBox="0 0 100 100" width="140" height="140" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="50" cy="50" r="45" stroke-dasharray="5,3"></circle>
+        <circle cx="50" cy="50" r="35" stroke-dasharray="1,5"></circle>
+        <circle cx="50" cy="50" r="25"></circle>
+        <path d="M 50,5 L 50,95 M 5,50 L 95,50" stroke-dasharray="2,4"></path>
       </svg>
     </div>
   </div>
@@ -71,7 +125,7 @@
   <!-- Header / Navigation -->
   <header class="header">
     <nav class="navbar" id="navbar">
-      <a href="#" class="logo">AC<span>.</span></a>
+      <a href="#" class="logo">MOKAFELA<span>.</span></a>
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
           <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
@@ -106,7 +160,7 @@
           I am <span class="typed-text" id="typed-text"></span><span class="cursor">&nbsp;</span>
         </p>
         <p class="hero-description fade-in">
-          A Frontend Engineer & UI/UX Designer crafting immersive digital experiences. Distance is irrelevant—I deliver world-class engineering and pixel-perfect results for clients globally, regardless of coordinates.
+          A Senior Frontend Engineer & Nuxt Specialist crafting high-performance, immersive web applications. Distance is irrelevant—I deliver world-class Vue systems and pixel-perfect results for clients globally.
         </p>
         <div class="hero-ctas fade-in">
           <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -114,7 +168,24 @@
         </div>
       </div>
       <div class="hero-visual">
-        <!-- Background 3D Earth renders fixed behind this space -->
+        <div class="interactive-card-wrapper">
+          <div class="interactive-card" id="hero-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <span class="circle-dot"></span>
+                <span class="card-title">developer.js</span>
+              </div>
+              <pre class="code-block"><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+  name: <span class="string">'Mohammad'</span>,
+  stack: [<span class="string">'Nuxt 3'</span>, <span class="string">'Vue 3'</span>, <span class="string">'TypeScript'</span>],
+  focus: [<span class="string">'Performance'</span>, <span class="string">'Mobile UX'</span>, <span class="string">'Architecture'</span>],
+  remoteReady: <span class="keyword">true</span>,
+  code: () => <span class="string">'✨ High Performance UI ✨'</span>
+};</code></pre>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -127,7 +198,7 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            Hi! I am Alex. I started my journey at the intersection of graphic design and software development. I specialize in building user interfaces that are fast, accessible, and delightful to interact with.
+            Hi! I am Mohammad. I'm a Senior Frontend Engineer focused on Vue 3, Nuxt 3, and modern web architectures. I specialize in building highly interactive, lightning-fast digital platforms that deliver premium user experiences across all devices.
           </p>
           <p>
             I focus on pixel-perfection, smooth micro-animations, and clean code architectures. Collaborating seamlessly from anywhere, I build top-tier frontend solutions for teams worldwide, proving that high-impact execution is entirely location-independent.
@@ -155,7 +226,7 @@
               </svg>
             </div>
             <h3>Clean Architecture</h3>
-            <p>Maintainable, scalable, and optimized codebases built for production.</p>
+            <p>Maintainable, scalable, and optimized composable design systems built for production.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -165,7 +236,7 @@
               </svg>
             </div>
             <h3>High Performance</h3>
-            <p>Flicker-free load times, optimized assets, and 100/100 Lighthouse scores.</p>
+            <p>Flicker-free loads, viewport lazy-rendering, and 100/100 Lighthouse scores.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -177,7 +248,7 @@
               </svg>
             </div>
             <h3>User Centric</h3>
-            <p>Intuitive user flows, micro-interactions, and accessible designs (WCAG/A11y).</p>
+            <p>Intuitive user flows, responsive gestures, and accessible designs (WCAG/A11y).</p>
           </div>
         </div>
       </div>
@@ -191,36 +262,36 @@
       </div>
       <div class="skills-container">
         <div class="skills-category">
-          <h3>Frontend</h3>
+          <h3>Frontend Stack</h3>
           <div class="skills-grid">
-            <div class="skill-pill"><span>React / Next.js</span></div>
-            <div class="skill-pill"><span>Vue / Nuxt</span></div>
+            <div class="skill-pill"><span>Vue 3 / Vue 2</span></div>
+            <div class="skill-pill"><span>Nuxt 3 / Nuxt 2</span></div>
             <div class="skill-pill"><span>TypeScript</span></div>
-            <div class="skill-pill"><span>CSS/SCSS</span></div>
+            <div class="skill-pill"><span>JavaScript (ES6+)</span></div>
             <div class="skill-pill"><span>Tailwind CSS</span></div>
-            <div class="skill-pill"><span>HTML5/Semantic</span></div>
+            <div class="skill-pill"><span>CSS/SCSS Variables</span></div>
           </div>
         </div>
         <div class="skills-category">
-          <h3>Backend & Tools</h3>
+          <h3>Backend & State</h3>
           <div class="skills-grid">
+            <div class="skill-pill"><span>Pinia / Vuex</span></div>
             <div class="skill-pill"><span>Node.js</span></div>
-            <div class="skill-pill"><span>Express</span></div>
-            <div class="skill-pill"><span>PostgreSQL</span></div>
+            <div class="skill-pill"><span>REST & WebSockets</span></div>
+            <div class="skill-pill"><span>Vite / Webpack</span></div>
             <div class="skill-pill"><span>Git / GitHub</span></div>
-            <div class="skill-pill"><span>Docker</span></div>
-            <div class="skill-pill"><span>REST & GraphQL</span></div>
+            <div class="skill-pill"><span>PostgreSQL</span></div>
           </div>
         </div>
         <div class="skills-category">
-          <h3>Design & UI</h3>
+          <h3>UI & Performance</h3>
           <div class="skills-grid">
-            <div class="skill-pill"><span>Figma</span></div>
-            <div class="skill-pill"><span>UI/UX Design</span></div>
-            <div class="skill-pill"><span>Prototyping</span></div>
+            <div class="skill-pill"><span>Lazy Rendering</span></div>
+            <div class="skill-pill"><span>Intersection Observer</span></div>
             <div class="skill-pill"><span>Framer Motion</span></div>
-            <div class="skill-pill"><span>Vector Art</span></div>
-            <div class="skill-pill"><span>Typography</span></div>
+            <div class="skill-pill"><span>UX Prototyping</span></div>
+            <div class="skill-pill"><span>A11y / WAI-ARIA</span></div>
+            <div class="skill-pill"><span>SEO / Metadata</span></div>
           </div>
         </div>
       </div>
@@ -235,10 +306,10 @@
       <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="dev">Development</button>
-        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="design">Optimization</button>
       </div>
       <div class="projects-grid">
-        <!-- Project 1 -->
+        <!-- Project 1: Zoodex Platform -->
         <div class="project-card" data-category="dev">
           <div class="project-image">
             <div class="project-mockup dev-mockup-1">
@@ -247,13 +318,14 @@
           </div>
           <div class="project-info">
             <div class="project-tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
+              <span class="tag">Nuxt 3</span>
+              <span class="tag">Vue 3</span>
+              <span class="tag">Pinia</span>
             </div>
-            <h3>Quantum Analytics Dashboard</h3>
-            <p>Real-time analytics tool visualization engine with customized dashboard metrics and WebSockets.</p>
-            <a href="#" class="project-link">
-              <span>View Case Study</span>
+            <h3>Zoodex Healthcare Platform</h3>
+            <p>High-performance telemedicine web application with state management, doctor portals, and responsive patient tools.</p>
+            <a href="https://github.com/Mokafela" target="_blank" class="project-link">
+              <span>View Project</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -262,22 +334,23 @@
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-card" data-category="design">
+        <!-- Project 2: Tehranio Portal -->
+        <div class="project-card" data-category="dev">
           <div class="project-image">
             <div class="project-mockup design-mockup-1">
-              <span class="mockup-logo">🚀</span>
+              <span class="mockup-logo">🗺️</span>
             </div>
           </div>
           <div class="project-info">
             <div class="project-tags">
-              <span class="tag">UI/UX</span>
-              <span class="tag">Figma</span>
+              <span class="tag">Nuxt 3</span>
+              <span class="tag">SSR</span>
+              <span class="tag">Tailwind</span>
             </div>
-            <h3>Cosmos Odyssey Mobile App</h3>
-            <p>Immersive celestial navigation mobile application prototype and visual branding kit.</p>
-            <a href="#" class="project-link">
-              <span>View Prototype</span>
+            <h3>Tehranio Web Portal</h3>
+            <p>Lightning-fast portal and location directory with server-side rendering for optimal SEO and client page loads.</p>
+            <a href="https://github.com/Mokafela" target="_blank" class="project-link">
+              <span>View Portal</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -286,22 +359,48 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
+        <!-- Project 3: Atlas Games Management Suite -->
         <div class="project-card" data-category="dev">
           <div class="project-image">
             <div class="project-mockup dev-mockup-2">
-              <span class="mockup-logo">⚡</span>
+              <span class="mockup-logo">🎮</span>
             </div>
           </div>
           <div class="project-info">
             <div class="project-tags">
-              <span class="tag">Vue.js</span>
-              <span class="tag">CSS Grid</span>
+              <span class="tag">Vue 3</span>
+              <span class="tag">Dashboard</span>
+              <span class="tag">SPA</span>
             </div>
-            <h3>Veloce eCommerce Engine</h3>
-            <p>A lightning-fast eCommerce web client powered by clean state machine logic and headless API.</p>
-            <a href="#" class="project-link">
-              <span>View Live Site</span>
+            <h3>Atlas Games Admin Suite</h3>
+            <p>Dual-interface match control panel and player management system for live gaming configurations.</p>
+            <a href="https://github.com/Mokafela" target="_blank" class="project-link">
+              <span>View Dashboard</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: Realtime Stream VST Dashboard -->
+        <div class="project-card" data-category="design">
+          <div class="project-image">
+            <div class="project-mockup dev-mockup-1" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%)">
+              <span class="mockup-logo">🔊</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="tag">WebSockets</span>
+              <span class="tag">VST Sync</span>
+              <span class="tag">Performance</span>
+            </div>
+            <h3>Realtime Stream VST Control</h3>
+            <p>Low-latency telemetry dashboard for remote audio plugins, streaming WebSocket data at 60fps.</p>
+            <a href="https://github.com/Mokafela" target="_blank" class="project-link">
+              <span>View Panel</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -328,7 +427,7 @@
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <span>alex.carter@example.com</span>
+              <span>m.karimddi@gmail.com</span>
             </div>
             <div class="detail-item">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -340,7 +439,7 @@
             </div>
           </div>
           <div class="social-links">
-            <a href="#" class="social-link" aria-label="GitHub">GH</a>
+            <a href="https://github.com/Mokafela" class="social-link" aria-label="GitHub" target="_blank">GH</a>
             <a href="#" class="social-link" aria-label="LinkedIn">LN</a>
             <a href="#" class="social-link" aria-label="Twitter">TW</a>
           </div>
@@ -372,7 +471,7 @@
 
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; 2026 Alex Carter. All rights reserved.</p>
+      <p>&copy; 2026 Mohammad. All rights reserved.</p>
       <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>

@@ -260,27 +260,45 @@ function initThemeSwitcher() {
   }
 }
 
-// Calculate parallax scroll translations on geometric background shapes
+// Calculate parallax scroll + mouse translations on geometric background shapes
 function initGeometryParallax() {
   const shapes = document.querySelectorAll('.geo-shape');
   if (shapes.length === 0) return;
 
-  const handleScroll = () => {
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  const lerpFactor = 0.08;
+
+  // Listen to mouse movement
+  window.addEventListener('mousemove', (e) => {
+    // Relative position from window center (-0.5 to 0.5)
+    targetX = (e.clientX / window.innerWidth) - 0.5;
+    targetY = (e.clientY / window.innerHeight) - 0.5;
+  }, { passive: true });
+
+  const tick = () => {
+    // LERP calculation for smooth mouse movement
+    currentX += (targetX - currentX) * lerpFactor;
+    currentY += (targetY - currentY) * lerpFactor;
+
     const scrollY = window.scrollY;
 
     shapes.forEach(shape => {
-      // Get speed factor from data attribute
-      const speed = parseFloat(shape.getAttribute('data-speed')) || 0.1;
-      
-      // Calculate scroll offset translation
-      const yTranslate = scrollY * speed;
-      
-      // Translate elements to create physical depth parallax
-      shape.style.transform = `translateY(${yTranslate}px)`;
+      const scrollSpeed = parseFloat(shape.getAttribute('data-speed')) || 0.1;
+      const mouseFactor = parseFloat(shape.getAttribute('data-mouse')) || 20;
+
+      const xTranslate = currentX * mouseFactor;
+      const yTranslate = (scrollY * scrollSpeed) + (currentY * mouseFactor);
+
+      // Translate element with translate3d for hardware acceleration
+      shape.style.transform = `translate3d(${xTranslate.toFixed(2)}px, ${yTranslate.toFixed(2)}px, 0)`;
     });
+
+    requestAnimationFrame(tick);
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  // Initial run
-  handleScroll();
+  // Start tick loop
+  tick();
 }
