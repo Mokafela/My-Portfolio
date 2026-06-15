@@ -9,12 +9,30 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+  <!-- Language Selection Modal -->
+  <div class="lang-modal" id="lang-modal">
+    <div class="lang-modal-content">
+      <h2 class="lang-modal-title">Select Your Language / زبان خود را انتخاب کنید / Sprache wählen</h2>
+      <div class="lang-options">
+        <button class="lang-btn-select" data-lang="en">
+          <span class="flag">🇬🇧</span> English
+        </button>
+        <button class="lang-btn-select" data-lang="fa">
+          <span class="flag">🇮🇷</span> فارسی
+        </button>
+        <button class="lang-btn-select" data-lang="de">
+          <span class="flag">🇩🇪</span> Deutsch
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Ambient background elements -->
   <div class="glow-bg">
     <div class="blob blob-1"></div>
@@ -128,15 +146,27 @@
       <a href="#" class="logo">MOKAFELA<span>.</span></a>
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="#home" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </div>
       <div class="nav-actions">
-        <a href="#contact" class="btn btn-primary nav-cta">Let's Talk</a>
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-active-btn" id="lang-active-btn" aria-label="Switch Language">
+            🌐 <span>EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-opt" data-lang="en">English</button>
+            <button class="lang-opt" data-lang="fa">فارسی</button>
+            <button class="lang-opt" data-lang="de">Deutsch</button>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary nav-cta" data-i18n="btn_talk">Let's Talk</a>
         <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="4" y1="6" x2="20" y2="6"></line>
@@ -152,19 +182,19 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section">
       <div class="hero-content">
-        <div class="hero-badge fade-in">Available for Freelance & Full-time</div>
-        <h1 class="hero-title fade-in">
+        <div class="hero-badge fade-in" data-i18n="hero_badge">Available for Freelance & Full-time</div>
+        <h1 class="hero-title fade-in" data-i18n="hero_title">
           Building Digital <span class="gradient-text">Masterpieces</span> That Drive Impact.
         </h1>
         <p class="hero-subtitle fade-in">
           I am <span class="typed-text" id="typed-text"></span><span class="cursor">&nbsp;</span>
         </p>
-        <p class="hero-description fade-in">
+        <p class="hero-description fade-in" data-i18n="hero_desc">
           A Senior Frontend Engineer & Nuxt Specialist crafting high-performance, immersive web applications. Distance is irrelevant—I deliver world-class Vue systems and pixel-perfect results for clients globally.
         </p>
         <div class="hero-ctas fade-in">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#about" class="btn btn-secondary">Learn More</a>
+          <a href="#projects" class="btn btn-primary" data-i18n="btn_view_projects">View Projects</a>
+          <a href="#about" class="btn btn-secondary" data-i18n="btn_learn_more">Learn More</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -192,29 +222,29 @@
     <!-- About Section -->
     <section id="about" class="about-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag">01 / About Me</span>
-        <h2 class="section-title">Bridging Code and Aesthetics</h2>
+        <span class="section-tag" data-i18n="about_tag">01 / About Me</span>
+        <h2 class="section-title" data-i18n="about_title">Bridging Code and Aesthetics</h2>
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p>
+          <p data-i18n="about_p1">
             Hi! I am Mohammad. I'm a Senior Frontend Engineer focused on Vue 3, Nuxt 3, and modern web architectures. I specialize in building highly interactive, lightning-fast digital platforms that deliver premium user experiences across all devices.
           </p>
-          <p>
+          <p data-i18n="about_p2">
             I focus on pixel-perfection, smooth micro-animations, and clean code architectures. Collaborating seamlessly from anywhere, I build top-tier frontend solutions for teams worldwide, proving that high-impact execution is entirely location-independent.
           </p>
           <div class="stats-grid">
             <div class="stat-card">
-              <span class="stat-num">5+</span>
-              <span class="stat-label">Years Experience</span>
+              <span class="stat-num" data-i18n="about_stat1_num">5+</span>
+              <span class="stat-label" data-i18n="about_stat1_lbl">Years Experience</span>
             </div>
             <div class="stat-card">
-              <span class="stat-num">40+</span>
-              <span class="stat-label">Completed Projects</span>
+              <span class="stat-num" data-i18n="about_stat2_num">40+</span>
+              <span class="stat-label" data-i18n="about_stat2_lbl">Completed Projects</span>
             </div>
             <div class="stat-card">
-              <span class="stat-num">100%</span>
-              <span class="stat-label">Client Delight</span>
+              <span class="stat-num" data-i18n="about_stat3_num">100%</span>
+              <span class="stat-label" data-i18n="about_stat3_lbl">Client Delight</span>
             </div>
           </div>
         </div>
@@ -225,8 +255,10 @@
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
             </div>
-            <h3>Clean Architecture</h3>
-            <p>Maintainable, scalable, and optimized composable design systems built for production.</p>
+            <div>
+              <h3 data-i18n="feat1_title">Clean Architecture</h3>
+              <p data-i18n="feat1_desc">Maintainable, scalable, and optimized composable design systems built for production.</p>
+            </div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -235,8 +267,10 @@
                 <path d="M12 6v6l4 2"></path>
               </svg>
             </div>
-            <h3>High Performance</h3>
-            <p>Flicker-free loads, viewport lazy-rendering, and 100/100 Lighthouse scores.</p>
+            <div>
+              <h3 data-i18n="feat2_title">High Performance</h3>
+              <p data-i18n="feat2_desc">Flicker-free loads, viewport lazy-rendering, and 100/100 Lighthouse scores.</p>
+            </div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -247,8 +281,10 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             </div>
-            <h3>User Centric</h3>
-            <p>Intuitive user flows, responsive gestures, and accessible designs (WCAG/A11y).</p>
+            <div>
+              <h3 data-i18n="feat3_title">User Centric</h3>
+              <p data-i18n="feat3_desc">Intuitive user flows, responsive gestures, and accessible designs (WCAG/A11y).</p>
+            </div>
           </div>
         </div>
       </div>
@@ -257,12 +293,12 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag">02 / Expertise</span>
-        <h2 class="section-title">My Tech Ecosystem</h2>
+        <span class="section-tag" data-i18n="skills_tag">02 / Expertise</span>
+        <h2 class="section-title" data-i18n="skills_title">My Tech Ecosystem</h2>
       </div>
       <div class="skills-container">
         <div class="skills-category">
-          <h3>Frontend Stack</h3>
+          <h3 data-i18n="skills_cat1">Frontend Stack</h3>
           <div class="skills-grid">
             <div class="skill-pill"><span>Vue 3 / Vue 2</span></div>
             <div class="skill-pill"><span>Nuxt 3 / Nuxt 2</span></div>
@@ -273,7 +309,7 @@
           </div>
         </div>
         <div class="skills-category">
-          <h3>Backend & State</h3>
+          <h3 data-i18n="skills_cat2">Backend & State</h3>
           <div class="skills-grid">
             <div class="skill-pill"><span>Pinia / Vuex</span></div>
             <div class="skill-pill"><span>Node.js</span></div>
@@ -284,7 +320,7 @@
           </div>
         </div>
         <div class="skills-category">
-          <h3>UI & Performance</h3>
+          <h3 data-i18n="skills_cat3">UI & Performance</h3>
           <div class="skills-grid">
             <div class="skill-pill"><span>Lazy Rendering</span></div>
             <div class="skill-pill"><span>Intersection Observer</span></div>
@@ -300,13 +336,13 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag">03 / Selected Works</span>
-        <h2 class="section-title">Bringing Concepts to Reality</h2>
+        <span class="section-tag" data-i18n="projects_tag">03 / Selected Works</span>
+        <h2 class="section-title" data-i18n="projects_title">Bringing Concepts to Reality</h2>
       </div>
       <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="dev">Development</button>
-        <button class="filter-btn" data-filter="design">Optimization</button>
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+        <button class="filter-btn" data-filter="dev" data-i18n="filter_dev">Development</button>
+        <button class="filter-btn" data-filter="design" data-i18n="filter_opt">Optimization</button>
       </div>
       <div class="projects-grid">
         <!-- Project 1: Zoodex Platform -->
@@ -322,10 +358,10 @@
               <span class="tag">Vue 3</span>
               <span class="tag">Pinia</span>
             </div>
-            <h3>Zoodex Healthcare Platform</h3>
-            <p>High-performance telemedicine web application with state management, doctor portals, and responsive patient tools.</p>
+            <h3 data-i18n="proj1_title">Zoodex Healthcare Platform</h3>
+            <p data-i18n="proj1_desc">High-performance telemedicine web application with state management, doctor portals, and responsive patient tools.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
-              <span>View Project</span>
+              <span data-i18n="proj_link_view">View Project</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -347,10 +383,10 @@
               <span class="tag">SSR</span>
               <span class="tag">Tailwind</span>
             </div>
-            <h3>Tehranio Web Portal</h3>
-            <p>Lightning-fast portal and location directory with server-side rendering for optimal SEO and client page loads.</p>
+            <h3 data-i18n="proj2_title">Tehranio Web Portal</h3>
+            <p data-i18n="proj2_desc">Lightning-fast portal and location directory with server-side rendering for optimal SEO and client page loads.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
-              <span>View Portal</span>
+              <span data-i18n="proj_link_portal">View Portal</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -372,10 +408,10 @@
               <span class="tag">Dashboard</span>
               <span class="tag">SPA</span>
             </div>
-            <h3>Atlas Games Admin Suite</h3>
-            <p>Dual-interface match control panel and player management system for live gaming configurations.</p>
+            <h3 data-i18n="proj3_title">Atlas Games Admin Suite</h3>
+            <p data-i18n="proj3_desc">Dual-interface match control panel and player management system for live gaming configurations.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
-              <span>View Dashboard</span>
+              <span data-i18n="proj_link_dashboard">View Dashboard</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -397,10 +433,10 @@
               <span class="tag">VST Sync</span>
               <span class="tag">Performance</span>
             </div>
-            <h3>Realtime Stream VST Control</h3>
-            <p>Low-latency telemetry dashboard for remote audio plugins, streaming WebSocket data at 60fps.</p>
+            <h3 data-i18n="proj4_title">Realtime Stream VST Control</h3>
+            <p data-i18n="proj4_desc">Low-latency telemetry dashboard for remote audio plugins, streaming WebSocket data at 60fps.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
-              <span>View Panel</span>
+              <span data-i18n="proj_link_panel">View Panel</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -414,13 +450,13 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag">04 / Let's Connect</span>
-        <h2 class="section-title">Start a Conversation</h2>
+        <span class="section-tag" data-i18n="contact_tag">04 / Let's Connect</span>
+        <h2 class="section-title" data-i18n="contact_title">Start a Conversation</h2>
       </div>
       <div class="contact-container">
         <div class="contact-info">
-          <h3>Have an idea in mind?</h3>
-          <p>Let's collaborate to build something outstanding. Drop me a line, and let's turn your vision into pixel-perfect reality.</p>
+          <h3 data-i18n="contact_sub">Have an idea in mind?</h3>
+          <p data-i18n="contact_desc">Let's collaborate to build something outstanding. Drop me a line, and let's turn your vision into pixel-perfect reality.</p>
           <div class="contact-details">
             <div class="detail-item">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -435,7 +471,7 @@
                 <line x1="2" y1="12" x2="22" y2="12"></line>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
-              <span>Remote / Worldwide</span>
+              <span data-i18n="contact_loc">Remote / Worldwide</span>
             </div>
           </div>
           <div class="social-links">
@@ -446,19 +482,19 @@
         </div>
         <form class="contact-form" id="contact-form">
           <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required placeholder="John Doe">
+            <label for="name" data-i18n="form_name_lbl">Your Name</label>
+            <input type="text" id="name" name="name" required data-i18n-placeholder="form_name_ph">
           </div>
           <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required placeholder="john@example.com">
+            <label for="email" data-i18n="form_email_lbl">Your Email</label>
+            <input type="email" id="email" name="email" required data-i18n-placeholder="form_email_ph">
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+            <label for="message" data-i18n="form_msg_lbl">Message</label>
+            <textarea id="message" name="message" rows="5" required data-i18n-placeholder="form_msg_ph"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
-            <span>Send Message</span>
+            <span data-i18n="form_submit_btn">Send Message</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -471,11 +507,11 @@
 
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; 2026 Mohammad. All rights reserved.</p>
+      <p data-i18n="footer_copy">&copy; 2026 Mohammad. All rights reserved.</p>
       <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#projects" data-i18n="nav_projects">Projects</a>
       </div>
     </div>
   </footer>
