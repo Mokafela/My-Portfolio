@@ -302,39 +302,79 @@ function initSplineScrollTrigger() {
   const viewer = document.querySelector('spline-viewer');
   if (!wrapper || !viewer) return;
 
+  let splineObject = null;
+
+  // Query Spline internal object when loaded
+  const find3DObject = () => {
+    const spline = viewer._spline || viewer.spline;
+    if (spline && typeof spline.getAllObjects === 'function') {
+      const objects = spline.getAllObjects();
+      // Look for earth, planet, globe, or sphere objects
+      splineObject = objects.find(obj => {
+        const name = (obj.name || '').toLowerCase();
+        return name.includes('earth') || name.includes('planet') || name.includes('globe') || name.includes('sphere');
+      });
+      // Fallback: any group/mesh object that is not camera or light
+      if (!splineObject) {
+        splineObject = objects.find(obj => {
+          const name = (obj.name || '').toLowerCase();
+          return !name.includes('camera') && !name.includes('light') && !name.includes('ambient');
+        });
+      }
+    }
+  };
+
+  viewer.addEventListener('load', find3DObject);
+
   const handleScroll = () => {
     const scrollY = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
     const isMobile = window.innerWidth <= 1024;
 
-    // 1. Rotate the Earth based on scroll
-    const rotY = scrollY * 0.15;
-    const rotX = scrollY * 0.05;
-    viewer.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+    // 1. Rotate the 3D Object directly vs Fallback to container canvas rotation
+    if (splineObject) {
+      viewer.style.transform = 'none'; // Clear CSS transform on viewer element
+      const rotY = scrollY * 0.0025;
+      const rotX = scrollY * 0.0006;
+      splineObject.rotation.y = rotY;
+      splineObject.rotation.x = rotX;
+    } else {
+      // Fallback: Rotate HTML canvas element
+      const rotY = scrollY * 0.15;
+      const rotX = scrollY * 0.05;
+      viewer.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+      find3DObject(); // Attempt to query object again
+    }
 
     // 2. Move Earth down the screen (parallax effect)
-    const translateYOffset = scrollY * 0.5; // Translate down at 50% scroll speed
-    
+    const translateYOffset = scrollY * 0.45;
+    wrapper.style.transform = `translateY(${translateYOffset}px)`;
+
+    // 3. Darken/fade Earth on scroll
     if (isMobile) {
-      // Centered translation on mobile
-      wrapper.style.transform = `translate(-50%, calc(-50% + ${translateYOffset}px))`;
-      // Darker base on mobile so it doesn't distract from text overlays
-      wrapper.style.opacity = Math.max(0.08, 0.25 - (progress * 0.17));
+      wrapper.style.opacity = Math.max(0.06, 0.22 - (progress * 0.16));
     } else {
-      // Right-aligned translation on desktop
-      wrapper.style.transform = `translateY(calc(-50% + ${translateYOffset}px))`;
-      // Fade from 1.0 down to 0.15
       wrapper.style.opacity = Math.max(0.12, 1 - (progress * 0.88));
     }
 
-    // 3. Darken the Earth visually via WebGL canvas filter
+    // 4. Reduce WebGL canvas brightness
     const brightness = 1 - (progress * 0.7);
     viewer.style.filter = `brightness(${Math.max(0.3, brightness)})`;
   };
 
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('resize', handleScroll);
+
+  // Polling to capture 3D object once loaded in the background
+  let attempts = 0;
+  const pollInterval = setInterval(() => {
+    find3DObject();
+    handleScroll();
+    attempts++;
+    if (splineObject || attempts > 50) clearInterval(pollInterval);
+  }, 200);
+
   // Initial call
   handleScroll();
 }
