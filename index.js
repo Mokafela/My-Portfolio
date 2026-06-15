@@ -235,9 +235,11 @@ function applyLanguage(lang) {
   });
 
   // Update navbar indicator
-  const activeBtnText = document.querySelector('#lang-active-btn span');
-  if (activeBtnText) {
-    activeBtnText.textContent = lang.toUpperCase();
+  const activeBtn = document.getElementById('lang-active-btn');
+  if (activeBtn) {
+    const flags = { en: '🇬🇧', fa: '🇮🇷', de: '🇩🇪' };
+    const flag = flags[lang] || '🌐';
+    activeBtn.innerHTML = `${flag} <span>${lang.toUpperCase()}</span>`;
   }
 
   // Restart typed text with the new language words
