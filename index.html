@@ -14,8 +14,6 @@
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="index.css">
 
-  <!-- Spline Viewer Component -->
-  <script type="module" src="spline-viewer.js"></script>
 </head>
 <body>
   <!-- Ambient background elements -->
@@ -25,9 +23,49 @@
     <div class="blob blob-3"></div>
   </div>
 
-  <!-- Global 3D Background Earth -->
-  <div class="spline-wrapper">
-    <spline-viewer url="scene.splinecode" background="transparent"></spline-viewer>
+  <!-- High-Performance Geometric Background shapes -->
+  <div class="geometry-bg">
+    <!-- Dot Grid Matrix -->
+    <div class="geo-shape geo-grid" data-speed="-0.15">
+      <svg width="220" height="220" fill="currentColor">
+        <pattern id="dot-grid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="rgba(255, 255, 255, 0.1)"></circle>
+        </pattern>
+        <rect width="220" height="220" fill="url(#dot-grid)"></rect>
+      </svg>
+    </div>
+
+    <!-- Frosted Glass Circle -->
+    <div class="geo-shape geo-circle" data-speed="0.1"></div>
+
+    <!-- Glowing wireframe triangle -->
+    <div class="geo-shape geo-triangle" data-speed="0.25">
+      <svg viewBox="0 0 100 100" width="130" height="130" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polygon points="50,10 90,80 10,80"></polygon>
+      </svg>
+    </div>
+
+    <!-- Tech wireframe Hexagon -->
+    <div class="geo-shape geo-hexagon" data-speed="-0.2">
+      <svg viewBox="0 0 100 100" width="160" height="160" fill="none" stroke="currentColor" stroke-width="1">
+        <polygon points="50,5 90,25 90,75 50,95 10,75 10,25"></polygon>
+      </svg>
+    </div>
+
+    <!-- Floating Crosses -->
+    <div class="geo-shape geo-cross-1" data-speed="0.08">
+      <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="1.5">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </div>
+
+    <div class="geo-shape geo-cross-2" data-speed="-0.12">
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </div>
   </div>
 
   <!-- Header / Navigation -->

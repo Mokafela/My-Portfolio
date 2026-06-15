@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initNavHighlight();
   initThemeSwitcher();
-  initSplineTransparency();
-  initSplineScrollTrigger();
+  initGeometryParallax();
 });
 
 // Mobile Navbar Toggle Menu
@@ -261,120 +260,27 @@ function initThemeSwitcher() {
   }
 }
 
-// Remove default backgrounds from Spline Viewer's internal shadow canvas
-function initSplineTransparency() {
-  const viewer = document.querySelector('spline-viewer');
-  if (!viewer) return;
-
-  // Set attribute directly
-  viewer.setAttribute('background', 'transparent');
-
-  const makeTransparent = () => {
-    const shadow = viewer.shadowRoot;
-    if (!shadow) return;
-
-    // Target internal container and canvas elements
-    const canvas = shadow.querySelector('canvas') || shadow.getElementById('canvas3d');
-    const container = shadow.getElementById('container');
-    const shadowLogo = shadow.getElementById('logo');
-
-    if (canvas) canvas.style.background = 'transparent';
-    if (container) container.style.background = 'transparent';
-    if (shadowLogo) shadowLogo.style.opacity = '0.3'; // Subtle watermark transparency
-  };
-
-  // Run on load event or immediately if already loaded
-  viewer.addEventListener('load', makeTransparent);
-  
-  // Backup polling in case event triggers early
-  let attempts = 0;
-  const interval = setInterval(() => {
-    viewer.setAttribute('background', 'transparent');
-    makeTransparent();
-    attempts++;
-    if (attempts > 30) clearInterval(interval);
-  }, 100);
-}
-
-// Map scroll progress to 3D rotation, translation, and opacity of the Spline Viewer
-function initSplineScrollTrigger() {
-  const wrapper = document.querySelector('.spline-wrapper');
-  const viewer = document.querySelector('spline-viewer');
-  if (!wrapper || !viewer) return;
-
-  let splineObject = null;
-
-  // Query Spline internal object when loaded
-  const find3DObject = () => {
-    const spline = viewer._spline || viewer.spline;
-    if (spline && typeof spline.getAllObjects === 'function') {
-      const objects = spline.getAllObjects();
-      // Look for earth, planet, globe, or sphere objects
-      splineObject = objects.find(obj => {
-        const name = (obj.name || '').toLowerCase();
-        return name.includes('earth') || name.includes('planet') || name.includes('globe') || name.includes('sphere');
-      });
-      // Fallback: any group/mesh object that is not camera or light
-      if (!splineObject) {
-        splineObject = objects.find(obj => {
-          const name = (obj.name || '').toLowerCase();
-          return !name.includes('camera') && !name.includes('light') && !name.includes('ambient');
-        });
-      }
-    }
-  };
-
-  viewer.addEventListener('load', find3DObject);
+// Calculate parallax scroll translations on geometric background shapes
+function initGeometryParallax() {
+  const shapes = document.querySelectorAll('.geo-shape');
+  if (shapes.length === 0) return;
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
-    const isMobile = window.innerWidth <= 1024;
 
-    // 1. Rotate the 3D Object directly vs Fallback to container canvas rotation
-    if (splineObject) {
-      viewer.style.transform = 'none'; // Clear CSS transform on viewer element
-      const rotY = scrollY * 0.0025;
-      const rotX = scrollY * 0.0006;
-      splineObject.rotation.y = rotY;
-      splineObject.rotation.x = rotX;
-    } else {
-      // Fallback: Rotate HTML canvas element
-      const rotY = scrollY * 0.15;
-      const rotX = scrollY * 0.05;
-      viewer.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
-      find3DObject(); // Attempt to query object again
-    }
-
-    // 2. Move Earth down the screen (parallax effect)
-    const translateYOffset = scrollY * 0.45;
-    wrapper.style.transform = `translateY(${translateYOffset}px)`;
-
-    // 3. Darken/fade Earth on scroll
-    if (isMobile) {
-      wrapper.style.opacity = Math.max(0.06, 0.22 - (progress * 0.16));
-    } else {
-      wrapper.style.opacity = Math.max(0.12, 1 - (progress * 0.88));
-    }
-
-    // 4. Reduce WebGL canvas brightness
-    const brightness = 1 - (progress * 0.7);
-    viewer.style.filter = `brightness(${Math.max(0.3, brightness)})`;
+    shapes.forEach(shape => {
+      // Get speed factor from data attribute
+      const speed = parseFloat(shape.getAttribute('data-speed')) || 0.1;
+      
+      // Calculate scroll offset translation
+      const yTranslate = scrollY * speed;
+      
+      // Translate elements to create physical depth parallax
+      shape.style.transform = `translateY(${yTranslate}px)`;
+    });
   };
 
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('resize', handleScroll);
-
-  // Polling to capture 3D object once loaded in the background
-  let attempts = 0;
-  const pollInterval = setInterval(() => {
-    find3DObject();
-    handleScroll();
-    attempts++;
-    if (splineObject || attempts > 50) clearInterval(pollInterval);
-  }, 200);
-
-  // Initial call
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  // Initial run
   handleScroll();
 }

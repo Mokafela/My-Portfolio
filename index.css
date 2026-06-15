@@ -1232,35 +1232,105 @@ body.theme-cyberpunk .theme-btn {
   border-radius: 0 !important;
 }
 
-/* Spline Container Styling */
-.spline-wrapper {
+/* Geometry Background System */
+.geometry-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -2;
+  overflow: hidden;
   pointer-events: none;
-  border-radius: 0 !important;
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.spline-wrapper::before {
-  display: none !important;
+.geo-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.22;
+  transition: transform 0.12s cubic-bezier(0.1, 0.8, 0.2, 1);
+  will-change: transform;
 }
 
-.spline-wrapper spline-viewer {
-  width: 100%;
-  height: 100%;
-  background: transparent !important;
-  background-color: transparent !important;
-  transition: transform 0.1s ease-out;
+/* Theme color overrides for shapes */
+body.theme-glassmorphism .geo-shape {
+  color: var(--primary);
 }
+body.theme-cyberpunk .geo-shape {
+  color: var(--text-color);
+  opacity: 0.35;
+}
+body.theme-luxury .geo-shape {
+  color: var(--primary);
+  opacity: 0.14;
+}
+
+/* Individual shape placements & styles */
+.geo-grid {
+  top: 15%;
+  right: 8%;
+}
+
+.geo-circle {
+  top: 55%;
+  left: 8%;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left, var(--primary-glow), transparent);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+}
+
+body.theme-cyberpunk .geo-circle {
+  border-radius: 0% !important;
+  background: transparent !important;
+  border: 2px solid #333333 !important;
+}
+
+body.theme-luxury .geo-circle {
+  background: radial-gradient(circle at top left, rgba(184, 151, 90, 0.04), transparent) !important;
+}
+
+.geo-triangle {
+  top: 20%;
+  left: 12%;
+  filter: drop-shadow(0 0 15px var(--primary-glow));
+  animation: geoRotateClockwise 45s infinite linear;
+}
+
+.geo-hexagon {
+  top: 50%;
+  right: 12%;
+  filter: drop-shadow(0 0 20px rgba(217, 70, 239, 0.12));
+  animation: geoRotateCounterClockwise 55s infinite linear;
+}
+
+.geo-cross-1 {
+  top: 10%;
+  left: 45%;
+  opacity: 0.12;
+  animation: geoRotateClockwise 30s infinite linear;
+}
+
+.geo-cross-2 {
+  top: 75%;
+  right: 40%;
+  opacity: 0.12;
+  animation: geoRotateCounterClockwise 35s infinite linear;
+}
+
+/* Rotating Animations */
+@keyframes geoRotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes geoRotateCounterClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
 
