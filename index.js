@@ -296,18 +296,45 @@ function initSplineTransparency() {
   }, 100);
 }
 
-// Map scroll progress to 3D rotation of the Spline Viewer
+// Map scroll progress to 3D rotation, translation, and opacity of the Spline Viewer
 function initSplineScrollTrigger() {
+  const wrapper = document.querySelector('.spline-wrapper');
   const viewer = document.querySelector('spline-viewer');
-  if (!viewer) return;
+  if (!wrapper || !viewer) return;
 
-  window.addEventListener('scroll', () => {
+  const handleScroll = () => {
     const scrollY = window.scrollY;
-    // Map scroll progress to y-axis and x-axis rotations for 3D effect
-    const rotY = scrollY * 0.12; 
-    const rotX = scrollY * 0.04;
-    
-    // Update transform
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+    const isMobile = window.innerWidth <= 1024;
+
+    // 1. Rotate the Earth based on scroll
+    const rotY = scrollY * 0.15;
+    const rotX = scrollY * 0.05;
     viewer.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
-  });
+
+    // 2. Move Earth down the screen (parallax effect)
+    const translateYOffset = scrollY * 0.5; // Translate down at 50% scroll speed
+    
+    if (isMobile) {
+      // Centered translation on mobile
+      wrapper.style.transform = `translate(-50%, calc(-50% + ${translateYOffset}px))`;
+      // Darker base on mobile so it doesn't distract from text overlays
+      wrapper.style.opacity = Math.max(0.08, 0.25 - (progress * 0.17));
+    } else {
+      // Right-aligned translation on desktop
+      wrapper.style.transform = `translateY(calc(-50% + ${translateYOffset}px))`;
+      // Fade from 1.0 down to 0.15
+      wrapper.style.opacity = Math.max(0.12, 1 - (progress * 0.88));
+    }
+
+    // 3. Darken the Earth visually via WebGL canvas filter
+    const brightness = 1 - (progress * 0.7);
+    viewer.style.filter = `brightness(${Math.max(0.3, brightness)})`;
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('resize', handleScroll);
+  // Initial call
+  handleScroll();
 }

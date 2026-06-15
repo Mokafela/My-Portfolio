@@ -910,6 +910,13 @@ section {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
+  .spline-wrapper {
+    left: 50%;
+    right: auto;
+    width: 320px;
+    height: 320px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1233,10 +1240,14 @@ body.theme-cyberpunk .theme-btn {
 
 /* Spline Container Styling */
 .spline-wrapper {
-  width: 100%;
+  position: fixed;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  width: 500px;
   height: 480px;
-  max-width: 500px;
-  position: relative;
+  z-index: -1;
+  pointer-events: none;
   border-radius: 30px;
   overflow: hidden;
   border: 1px solid var(--card-border);
@@ -1245,7 +1256,6 @@ body.theme-cyberpunk .theme-btn {
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 
               0 0 40px rgba(99, 102, 241, 0.1);
-  transition: var(--transition-smooth);
   display: flex;
   align-items: center;
   justify-content: center;
