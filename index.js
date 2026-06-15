@@ -265,6 +265,9 @@ function initSplineTransparency() {
   const viewer = document.querySelector('spline-viewer');
   if (!viewer) return;
 
+  // Set attribute directly
+  viewer.setAttribute('background', 'transparent');
+
   const makeTransparent = () => {
     const shadow = viewer.shadowRoot;
     if (!shadow) return;
@@ -285,6 +288,7 @@ function initSplineTransparency() {
   // Backup polling in case event triggers early
   let attempts = 0;
   const interval = setInterval(() => {
+    viewer.setAttribute('background', 'transparent');
     makeTransparent();
     attempts++;
     if (attempts > 30) clearInterval(interval);
