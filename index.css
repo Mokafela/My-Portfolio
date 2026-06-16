@@ -99,7 +99,6 @@ html {
 }
 
 body {
-  min-height: 100vh;
   position: relative;
   overflow-x: hidden;
   line-height: 1.6;
@@ -1601,22 +1600,69 @@ html[lang="fa"] .metric-dot {
   .hero-section {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 3rem;
-    padding-top: 10rem;
+    gap: 3.5rem;
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    min-height: auto;
+  }
+
+  html[lang="fa"] .hero-section {
+    text-align: right;
+  }
+  
+  .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  html[lang="fa"] .hero-badge {
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  html[lang="fa"] .hero-title {
+    margin-right: 0;
+    margin-left: auto;
   }
   
   .hero-description {
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.05rem;
+  }
+
+  html[lang="fa"] .hero-description {
+    margin-right: 0;
+    margin-left: auto;
   }
   
   .hero-ctas {
     justify-content: center;
+    gap: 0.85rem;
+  }
+
+  html[lang="fa"] .hero-ctas {
+    justify-content: flex-start;
+  }
+
+  .hero-visual {
+    display: none;
   }
   
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
+  }
+  
+  .stats-grid {
+    gap: 1rem;
   }
   
   .skills-container {
@@ -1625,35 +1671,77 @@ html[lang="fa"] .metric-dot {
   
   .contact-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
-
 }
 
 @media (max-width: 768px) {
+  section {
+    padding: 5rem 0 2rem;
+  }
+
+  /* Handle RTL layout and alignment rules natively */
+  html[lang="fa"] .hero-section {
+    text-align: right;
+  }
+
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.1rem;
+    line-height: 1.3;
+    word-break: keep-all;
+  }
+  
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  html[lang="fa"] .hero-ctas {
+    justify-content: flex-start;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    width: auto;
   }
   
   .navbar {
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 1.25rem;
+  }
+  
+  .logo {
+    font-size: 1.35rem;
   }
   
   .menu-toggle {
     display: block;
+    padding: 0.25rem;
   }
   
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 60px;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 70px);
-    background: rgba(8, 10, 16, 0.98);
-    backdrop-filter: blur(20px);
-    padding: 3rem 2rem;
+    height: calc(100vh - 60px);
+    background: var(--bg-color);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 2.5rem 1.5rem;
     transition: var(--transition-smooth);
     border-top: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
   }
   
   .nav-menu.open {
@@ -1662,22 +1750,68 @@ html[lang="fa"] .metric-dot {
   
   .nav-list {
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
+    width: 100%;
   }
   
   .nav-link {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    padding: 0.5rem 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
   
   .nav-cta {
     display: none;
   }
   
+  .about-text p {
+    font-size: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .company-card {
+    padding: 1.5rem;
+  }
+  
+  .feature-card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  
+  .skills-category {
+    padding: 1.5rem;
+  }
+  
+  .contact-form {
+    padding: 1.75rem 1.25rem;
+  }
+  
   .footer-content {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
     text-align: center;
+    padding: 0 1.25rem;
+  }
+  
+  .theme-switcher {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .switcher-toggle {
+    width: 44px;
+    height: 44px;
   }
 }
 
@@ -2374,6 +2508,32 @@ body.theme-psychology-light .lang-btn-select:hover {
   border-color: var(--primary) !important;
 }
 
+body.theme-psychology-light .lang-active-btn {
+  background: #f1f5f9 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #0f172a !important;
+}
+
+body.theme-psychology-light .lang-active-btn:hover {
+  background: #e2e8f0 !important;
+  border-color: var(--primary) !important;
+}
+
+body.theme-psychology-light .lang-dropdown {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.theme-psychology-light .lang-opt {
+  color: #475569 !important;
+}
+
+body.theme-psychology-light .lang-opt:hover {
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+}
+
 body.theme-psychology-light .logo {
   color: #0f172a !important;
 }
@@ -2844,12 +3004,35 @@ body.theme-luxury .geo-circle {
 }
 
 [dir="rtl"] .lang-dropdown {
-  right: auto;
-  left: 0;
+  right: 0;
+  left: auto;
 }
 
 [dir="rtl"] .lang-opt {
   text-align: right;
+}
+
+[dir="rtl"] .dropdown-flag {
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+[dir="rtl"] .lang-active-btn span {
+  display: inline-block;
+}
+
+/* Fix mobile nav menu layout & alignments in RTL */
+@media (max-width: 768px) {
+  [dir="rtl"] .navbar {
+    flex-direction: row-reverse;
+  }
+  [dir="rtl"] .nav-actions {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  [dir="rtl"] .logo {
+    text-align: right;
+  }
 }
 
 [dir="rtl"] .circle-dot::before {
@@ -2966,7 +3149,7 @@ body.theme-cyberpunk .lang-opt:hover {
 /* --- EXPERIENCE SECTION --- */
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -2979,6 +3162,8 @@ body.theme-cyberpunk .lang-opt:hover {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .company-card:hover {

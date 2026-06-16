@@ -288,6 +288,9 @@ function initLanguage() {
   const dropdownOpts = document.querySelectorAll('.lang-opt');
   const modalBtns = document.querySelectorAll('.lang-btn-select');
   const savedLang = localStorage.getItem('portfolio-lang');
+  
+  // Ensure default body overflow is unlocked initially
+  document.body.style.overflow = '';
 
   // Pre-load default or saved language in background
   if (savedLang) {
@@ -301,6 +304,7 @@ function initLanguage() {
     if (modal) {
       modal.style.display = 'flex';
       modal.classList.remove('fade-out');
+      document.body.style.overflow = 'hidden'; // Lock scroll
     }
   }
 
@@ -312,6 +316,7 @@ function initLanguage() {
         modal.classList.add('fade-out');
         setTimeout(() => {
           modal.style.display = 'none';
+          document.body.style.overflow = ''; // Unlock scroll
         }, 500);
       }
     });
@@ -494,7 +499,7 @@ function initProjectFilters() {
   });
 }
 
-// Client Side Form Validation & Interactive Feedback 
+// Form submission using Formspree AJAX backend
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('btn-submit');
@@ -505,19 +510,36 @@ function initContactForm() {
 
     const originalText = submitBtn.querySelector('span').textContent;
     submitBtn.disabled = true;
-    submitBtn.querySelector('span').textContent = 'Sending Message...';
+    submitBtn.querySelector('span').textContent = 'Sending...';
 
-    // Simulate submission progress
-    setTimeout(() => {
-      submitBtn.querySelector('span').textContent = 'Message Sent! ✨';
-      form.reset();
+    const formData = new FormData(form);
 
-      // Reset button state
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        submitBtn.querySelector('span').textContent = 'Sent Successfully! ✨';
+        form.reset();
+      } else {
+        submitBtn.querySelector('span').textContent = 'Submission Error ❌';
+      }
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.querySelector('span').textContent = originalText;
-      }, 3000);
-    }, 1500);
+      }, 3500);
+    })
+    .catch(() => {
+      submitBtn.querySelector('span').textContent = 'Connection Error ❌';
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('span').textContent = originalText;
+      }, 3500);
+    });
   });
 }
 
@@ -618,6 +640,12 @@ function initGeometryParallax() {
     // LERP calculation for smooth mouse movement
     currentX += (targetX - currentX) * lerpFactor;
     currentY += (targetY - currentY) * lerpFactor;
+
+    // Skip heavy animations on mobile/tablet viewports to prevent scroll lag
+    if (window.innerWidth <= 1024) {
+      requestAnimationFrame(tick);
+      return;
+    }
 
     const scrollY = window.scrollY;
 
@@ -752,7 +780,7 @@ function init3DRenderEngine() {
     lastMouseY = e.touches[0].clientY;
     vx = 0;
     vy = 0;
-  });
+  }, { passive: true });
 
   window.addEventListener('touchmove', (e) => {
     if (!isDragging || e.touches.length === 0) return;
@@ -764,11 +792,11 @@ function init3DRenderEngine() {
     vy = dy * 0.008;
     lastMouseX = e.touches[0].clientX;
     lastMouseY = e.touches[0].clientY;
-  });
+  }, { passive: true });
 
   window.addEventListener('touchend', () => {
     isDragging = false;
-  });
+  }, { passive: true });
 
   // Shape preset control click
   presetBtns.forEach(btn => {
