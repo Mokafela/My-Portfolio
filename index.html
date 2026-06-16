@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad | Senior Frontend Engineer & Nuxt Specialist Portfolio</title>
-  <meta name="description" content="Personal portfolio of Mohammad, a Senior Frontend Engineer specializing in high-performance Vue 3, Nuxt 3, and modern web architectures.">
+  <title>Mohammad | High-Performance Frontend Engineer</title>
+  <meta name="description" content="Frontend Engineer specializing in clean Vue and Nuxt architectures. Streamlined state management, zero bloat, and optimized bundle sizes.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,13 +146,14 @@
   <!-- Header / Navigation -->
   <header class="header">
     <nav class="navbar" id="navbar">
-      <a href="#" class="logo">MOKAFELA<span>.</span></a>
+      <a href="#" class="logo">M. Karimdadi<span>.</span></a>
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
           <li class="nav-item"><a href="#home" class="nav-link active" data-i18n="nav_home">Home</a></li>
           <li class="nav-item"><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link" data-i18n="nav_exp">Experience</a></li>
           <li class="nav-item"><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
-          <li class="nav-item"><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+          <!-- <li class="nav-item"><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li> -->
           <li class="nav-item"><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </div>
@@ -185,19 +186,16 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section">
       <div class="hero-content">
-        <div class="hero-badge fade-in" data-i18n="hero_badge">Available for Freelance & Full-time</div>
+        <div class="hero-badge fade-in" data-i18n="hero_badge">&lt; 80kb gzipped, every time</div>
         <h1 class="hero-title fade-in" data-i18n="hero_title">
-          Building Digital <span class="gradient-text">Masterpieces</span> That Drive Impact.
+          You got an idea? <br><span class="gradient-text">I got you</span>.
         </h1>
-        <p class="hero-subtitle fade-in">
-          I am <span class="typed-text" id="typed-text"></span><span class="cursor">&nbsp;</span>
-        </p>
         <p class="hero-description fade-in" data-i18n="hero_desc">
-          A Senior Frontend Engineer & Nuxt Specialist crafting high-performance, immersive web applications. Distance is irrelevant—I deliver world-class Vue systems and pixel-perfect results for clients globally.
+          Senior Frontend Engineer specializing in clean Vue and Nuxt architectures. I design lightweight, high-performance web applications with a focus on streamlined state management, zero bloat, and optimized bundle sizes.
         </p>
         <div class="hero-ctas fade-in">
-          <a href="#projects" class="btn btn-primary" data-i18n="btn_view_projects">View Projects</a>
-          <a href="#about" class="btn btn-secondary" data-i18n="btn_learn_more">Learn More</a>
+          <a href="#contact" class="btn btn-primary" data-i18n="btn_start_project">Start a Project</a>
+          <a href="#about" class="btn btn-secondary" data-i18n="btn_see_work">See My Work</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -207,15 +205,41 @@
             <div class="card-content">
               <div class="card-header">
                 <span class="circle-dot"></span>
-                <span class="card-title">developer.js</span>
+                <span class="card-title">performance-telemetry.vue</span>
               </div>
-              <pre class="code-block"><code><span class="keyword">const</span> <span class="variable">developer</span> = {
-  name: <span class="string">'Mohammad'</span>,
-  stack: [<span class="string">'Nuxt 3'</span>, <span class="string">'Vue 3'</span>, <span class="string">'TypeScript'</span>],
-  focus: [<span class="string">'Performance'</span>, <span class="string">'Mobile UX'</span>, <span class="string">'Architecture'</span>],
-  remoteReady: <span class="keyword">true</span>,
-  code: () => <span class="string">'✨ High Performance UI ✨'</span>
-};</code></pre>
+              
+              <!-- 3D Render Console -->
+              <div class="render-canvas-container">
+                <canvas id="canvas-3d"></canvas>
+              </div>
+              
+              <div class="render-controls">
+                <div class="preset-buttons">
+                  <button class="preset-btn active" data-shape="icosahedron">Icosahedron</button>
+                  <button class="preset-btn" data-shape="octahedron">Octahedron</button>
+                  <button class="preset-btn" data-shape="cube">Cube</button>
+                </div>
+                <div class="slider-group-inline">
+                  <label class="panel-lbl" for="render-rotate-speed">Speed</label>
+                  <input type="range" id="render-rotate-speed" min="0" max="100" value="30" class="slider">
+                </div>
+              </div>
+
+              <div class="render-telemetry">
+                <div class="tele-item">
+                  <span class="tele-label">Engine:</span>
+                  <span class="tele-value">Canvas 3D (0-Bloat)</span>
+                </div>
+                <div class="tele-item">
+                  <span class="tele-label">Verts/Edges:</span>
+                  <span class="tele-value" id="3d-counts">12 / 30</span>
+                </div>
+                <div class="tele-item">
+                  <span class="tele-label">Frame Time:</span>
+                  <span class="tele-value" id="3d-render-time">0.1ms</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -226,15 +250,15 @@
     <section id="about" class="about-section scroll-reveal">
       <div class="section-header">
         <span class="section-tag" data-i18n="about_tag">01 / About Me</span>
-        <h2 class="section-title" data-i18n="about_title">Bridging Code and Aesthetics</h2>
+        <h2 class="section-title" data-i18n="about_title">Focusing on Clean Logic</h2>
       </div>
       <div class="about-grid">
         <div class="about-text">
           <p data-i18n="about_p1">
-            Hi! I am Mohammad. I'm a Senior Frontend Engineer focused on Vue 3, Nuxt 3, and modern web architectures. I specialize in building highly interactive, lightning-fast digital platforms that deliver premium user experiences across all devices.
+            Hi, I'm Mohammad. I build high-performance frontend systems with Vue and Nuxt. My background in building real-time, data-intensive web applications taught me the value of rendering speed and interface responsiveness. I believe web interfaces should load instantly. If an application lags on a mid-range phone, the architecture needs refinement.
           </p>
           <p data-i18n="about_p2">
-            I focus on pixel-perfection, smooth micro-animations, and clean code architectures. Collaborating seamlessly from anywhere, I build top-tier frontend solutions for teams worldwide, proving that high-impact execution is entirely location-independent.
+            I focus on solving complex SSR hydration conflicts and maintaining simple, flat component logic. My goal is to write clean code that other team members can easily maintain. I avoid importing large libraries when simple CSS or minimal JavaScript gets the job done.
           </p>
           <div class="stats-grid">
             <div class="stat-card">
@@ -259,8 +283,8 @@
               </svg>
             </div>
             <div>
-              <h3 data-i18n="feat1_title">Clean Architecture</h3>
-              <p data-i18n="feat1_desc">Maintainable, scalable, and optimized composable design systems built for production.</p>
+              <h3 data-i18n="feat1_title">Flat Logic</h3>
+              <p data-i18n="feat1_desc">Write code someone else can read. Avoid nested state wrappers. Composables only when sharing state.</p>
             </div>
           </div>
           <div class="feature-card">
@@ -271,8 +295,8 @@
               </svg>
             </div>
             <div>
-              <h3 data-i18n="feat2_title">High Performance</h3>
-              <p data-i18n="feat2_desc">Flicker-free loads, viewport lazy-rendering, and 100/100 Lighthouse scores.</p>
+              <h3 data-i18n="feat2_title">Speed First</h3>
+              <p data-i18n="feat2_desc">Under 100ms interactions. Viewport lazy-rendering. If Lighthouse score is below 95, it is broken.</p>
             </div>
           </div>
           <div class="feature-card">
@@ -285,9 +309,56 @@
               </svg>
             </div>
             <div>
-              <h3 data-i18n="feat3_title">User Centric</h3>
-              <p data-i18n="feat3_desc">Intuitive user flows, responsive gestures, and accessible designs (WCAG/A11y).</p>
+              <h3 data-i18n="feat3_title">Useful Motion</h3>
+              <p data-i18n="feat3_desc">Micro-animations must be fast. Under 200ms or users feel the lag. Respect accessibility.</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section scroll-reveal">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="exp_tag">02 / Experience</span>
+        <h2 class="section-title" data-i18n="exp_title">Where I Build Systems</h2>
+      </div>
+      <div class="experience-grid">
+        <!-- Avapardaz -->
+        <div class="company-card">
+          <div class="company-header">
+            <div>
+              <h3 data-i18n="comp1_name">Avapardaz</h3>
+              <span class="company-role" data-i18n="comp1_role">Backend & Systems Infrastructure</span>
+            </div>
+          </div>
+          <p class="company-desc" data-i18n="comp1_desc">
+            Designed internal APIs, organized database schemas, and resolved scalability bottlenecks for Kerman's largest tech holding. Maintained high system availability under heavy e-commerce traffic.
+          </p>
+          <div class="company-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">APIs</span>
+            <span class="tag">SaaS</span>
+          </div>
+        </div>
+
+        <!-- Zoodex -->
+        <div class="company-card">
+          <div class="company-header">
+            <div>
+              <h3 data-i18n="comp2_name">Zoodex</h3>
+              <span class="company-role" data-i18n="comp2_role">Senior Frontend Specialist</span>
+            </div>
+          </div>
+          <p class="company-desc" data-i18n="comp2_desc">
+            Engineered high-performance telemetry dashboards and telemedicine portals. Optimized state initialization in Nuxt 3 and reduced initial loading latency by 40% using custom lazy-rendering.
+          </p>
+          <div class="company-tags">
+            <span class="tag">Nuxt 3</span>
+            <span class="tag">Vue 3</span>
+            <span class="tag">State Optimization</span>
+            <span class="tag">Performance</span>
           </div>
         </div>
       </div>
@@ -296,7 +367,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag" data-i18n="skills_tag">02 / Expertise</span>
+        <span class="section-tag" data-i18n="skills_tag">03 / Expertise</span>
         <h2 class="section-title" data-i18n="skills_title">My Tech Ecosystem</h2>
       </div>
       <div class="skills-container">
@@ -393,9 +464,10 @@
     </section>
 
     <!-- Projects Section -->
+    <!-- Projects Section commented out for now
     <section id="projects" class="projects-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag" data-i18n="projects_tag">03 / Selected Works</span>
+          <span class="section-tag" data-i18n="projects_tag">04 / Selected Works</span>
         <h2 class="section-title" data-i18n="projects_title">Bringing Concepts to Reality</h2>
       </div>
       <div class="filter-buttons">
@@ -404,7 +476,6 @@
         <button class="filter-btn" data-filter="design" data-i18n="filter_opt">Optimization</button>
       </div>
       <div class="projects-grid">
-        <!-- Project 1: Zoodex Platform -->
         <div class="project-card" data-category="dev">
           <div class="project-image">
             <div class="project-mockup dev-mockup-1">
@@ -418,7 +489,7 @@
               <span class="tag">Pinia</span>
             </div>
             <h3 data-i18n="proj1_title">Zoodex Healthcare Platform</h3>
-            <p data-i18n="proj1_desc">High-performance telemedicine web application with state management, doctor portals, and responsive patient tools.</p>
+            <p data-i18n="proj1_desc">Nuxt 3 telemedicine platform. Optimized state initialization and reduced initial load latency by 40%.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
               <span data-i18n="proj_link_view">View Project</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -428,8 +499,7 @@
             </a>
           </div>
         </div>
-
-        <!-- Project 2: Tehranio Portal -->
+ 
         <div class="project-card" data-category="dev">
           <div class="project-image">
             <div class="project-mockup design-mockup-1">
@@ -443,7 +513,7 @@
               <span class="tag">Tailwind</span>
             </div>
             <h3 data-i18n="proj2_title">Tehranio Web Portal</h3>
-            <p data-i18n="proj2_desc">Lightning-fast portal and location directory with server-side rendering for optimal SEO and client page loads.</p>
+            <p data-i18n="proj2_desc">High-traffic business directory for Tehran. Implemented SSR and optimized metadata structure, doubling organic SEO traffic.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
               <span data-i18n="proj_link_portal">View Portal</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -453,8 +523,7 @@
             </a>
           </div>
         </div>
-
-        <!-- Project 3: Atlas Games Management Suite -->
+ 
         <div class="project-card" data-category="dev">
           <div class="project-image">
             <div class="project-mockup dev-mockup-2">
@@ -468,7 +537,7 @@
               <span class="tag">SPA</span>
             </div>
             <h3 data-i18n="proj3_title">Atlas Games Admin Suite</h3>
-            <p data-i18n="proj3_desc">Dual-interface match control panel and player management system for live gaming configurations.</p>
+            <p data-i18n="proj3_desc">Real-time game administration suite. Developed custom match controller operating with sub-millisecond response latency.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
               <span data-i18n="proj_link_dashboard">View Dashboard</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -478,8 +547,7 @@
             </a>
           </div>
         </div>
-
-        <!-- Project 4: Realtime Stream VST Dashboard -->
+ 
         <div class="project-card" data-category="design">
           <div class="project-image">
             <div class="project-mockup dev-mockup-1" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%)">
@@ -493,7 +561,7 @@
               <span class="tag">Performance</span>
             </div>
             <h3 data-i18n="proj4_title">Realtime Stream VST Control</h3>
-            <p data-i18n="proj4_desc">Low-latency telemetry dashboard for remote audio plugins, streaming WebSocket data at 60fps.</p>
+            <p data-i18n="proj4_desc">Real-time audio plugin controller utilizing low-latency WebSockets for non-blocking main-thread synchronization.</p>
             <a href="https://github.com/Mokafela" target="_blank" class="project-link">
               <span data-i18n="proj_link_panel">View Panel</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -505,17 +573,18 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section scroll-reveal">
       <div class="section-header">
-        <span class="section-tag" data-i18n="contact_tag">04 / Let's Connect</span>
+          <span class="section-tag" data-i18n="contact_tag">05 / Let's Connect</span>
         <h2 class="section-title" data-i18n="contact_title">Start a Conversation</h2>
       </div>
       <div class="contact-container">
         <div class="contact-info">
-          <h3 data-i18n="contact_sub">Have an idea in mind?</h3>
-          <p data-i18n="contact_desc">Let's collaborate to build something outstanding. Drop me a line, and let's turn your vision into pixel-perfect reality.</p>
+          <h3 data-i18n="contact_sub">Get in Touch</h3>
+          <p data-i18n="contact_desc">Let's collaborate to build high-performance web applications. Reach out to discuss how we can bring your technical requirements to life.</p>
           <div class="contact-details">
             <div class="detail-item">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -534,9 +603,31 @@
             </div>
           </div>
           <div class="social-links">
-            <a href="https://github.com/Mokafela" class="social-link" aria-label="GitHub" target="_blank">GH</a>
-            <a href="#" class="social-link" aria-label="LinkedIn">LN</a>
-            <a href="#" class="social-link" aria-label="Twitter">TW</a>
+            <a href="https://github.com/Mokafela" class="social-link" aria-label="GitHub" target="_blank">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://t.me/Mokafela" class="social-link" aria-label="Telegram" target="_blank">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </a>
+            <a href="https://instagram.com/Mokafela" class="social-link" aria-label="Instagram" target="_blank">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
           </div>
         </div>
         <form class="contact-form" id="contact-form">
@@ -570,7 +661,7 @@
       <div class="footer-links">
         <a href="#home" data-i18n="nav_home">Home</a>
         <a href="#about" data-i18n="nav_about">About</a>
-        <a href="#projects" data-i18n="nav_projects">Projects</a>
+        <!-- <a href="#projects" data-i18n="nav_projects">Projects</a> -->
       </div>
     </div>
   </footer>
@@ -578,39 +669,11 @@
   <!-- Theme Switcher -->
   <div class="theme-switcher" id="theme-switcher">
     <button class="switcher-toggle" id="switcher-toggle" aria-label="Switch Design Trend">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-        <circle cx="12" cy="12" r="4"></circle>
+      <!-- Sun icon for light / Moon icon for dark (will toggle via JS) -->
+      <svg class="theme-icon-dark" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
     </button>
-    <div class="switcher-menu" id="switcher-menu">
-      <span class="switcher-group-label">Glassmorphism</span>
-      <button class="theme-btn active" data-theme="glassmorphism">
-        <span class="theme-dot dot-glass"></span> Default Indigo
-      </button>
-      <button class="theme-btn" data-theme="cool-tech">
-        <span class="theme-dot dot-cool-tech"></span> Cool Tech
-      </button>
-      <button class="theme-btn" data-theme="warm-amber">
-        <span class="theme-dot dot-warm-amber"></span> Warm Amber
-      </button>
-      <button class="theme-btn" data-theme="emerald-forest">
-        <span class="theme-dot dot-emerald"></span> Emerald Forest
-      </button>
-      <button class="theme-btn" data-theme="rose-quartz">
-        <span class="theme-dot dot-rose"></span> Rose Quartz
-      </button>
-      <button class="theme-btn" data-theme="minimal-white">
-        <span class="theme-dot dot-white"></span> Minimal White
-      </button>
-      <span class="switcher-group-label">Other</span>
-      <button class="theme-btn" data-theme="cyberpunk">
-        <span class="theme-dot dot-cyber"></span> Cyberpunk
-      </button>
-      <button class="theme-btn" data-theme="luxury">
-        <span class="theme-dot dot-luxury"></span> Elegant Luxury
-      </button>
-    </div>
   </div>
 
   <script src="index.js"></script>
